@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+import UIKit
+
+struct Card {
+    var identifier: Int
+    var color: UIColor
+    var shape: Character
+    var numberOfShapes: Int
+}
