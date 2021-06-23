@@ -64,6 +64,7 @@
 				77F08814267C76E2003AA63A /* Main.storyboard */,
 				77F08823267D20D2003AA63A /* Card.swift */,
 				77F088252681F70A003AA63A /* Set.swift */,
+				77F0881C267C76E3003AA63A /* Info.plist */,
 				77F08822267C770D003AA63A /* Supporting files */,
 			);
 			path = Set;
@@ -73,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				77F08819267C76E3003AA63A /* LaunchScreen.storyboard */,
-				77F0881C267C76E3003AA63A /* Info.plist */,
 				77F08817267C76E3003AA63A /* Assets.xcassets */,
 				77F08810267C76E2003AA63A /* SceneDelegate.swift */,
 				77F0880E267C76E2003AA63A /* AppDelegate.swift */,
