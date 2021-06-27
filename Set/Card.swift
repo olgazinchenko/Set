@@ -14,4 +14,5 @@ struct Card {
     var color: UIColor
     var shape: Character
     var numberOfShapes: Int
+    var isSelected: Bool = false
 }

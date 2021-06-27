@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
-            cardsSelectionAndDeselection(by: cardNumber)
+            selectAndDeselecCards(by: cardNumber)
         } else {
             print("Choosen card not in cardButtons")
         }
@@ -88,16 +88,25 @@ class ViewController: UIViewController {
         }
     }
     
-    var selectedCards: [Card] = []
-    func cardsSelectionAndDeselection(by index: Int){
-        cardButtons[index].layer.borderColor = UIColor.green.cgColor
-        for i in selectedCards.indices {
-            if selectedCards[index].identifier != selectedCards[i].identifier {
-                selectedCards.append(inGameCards[index])
+    func selectAndDeselecCards(by index: Int){
+        var selectedCardsNumber = 0
+        for index in inGameCards.indices {
+            if inGameCards[index].isSelected == true {
+                selectedCardsNumber += 1
             }
+        }
+        if cardButtons[index].layer.borderColor == UIColor.gray.cgColor, selectedCardsNumber < 3  {
+            cardButtons[index].layer.borderColor = UIColor.green.cgColor
+            inGameCards[index].isSelected = true
+        }
+        else {
+            cardButtons[index].layer.borderColor = UIColor.gray.cgColor
+            inGameCards[index].isSelected = false
+            selectedCardsNumber -= 1
         }
     }
     
+//TODO
     func cardsIndication() {
         //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
     }
@@ -116,5 +125,4 @@ class ViewController: UIViewController {
         self.cards = [Card]()
         super.init(coder: aDecoder)
     }
-    
 }

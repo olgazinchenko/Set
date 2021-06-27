@@ -17,151 +17,150 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0l-Ew-Uas">
-                                <rect key="frame" x="172" y="808" width="70" height="30"/>
+                                <rect key="frame" x="172" y="824" width="70" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Lvs-J5-Gyv"/>
+                                </constraints>
                                 <state key="normal" title="Add cards"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nP6-93-lJ8">
-                                <rect key="frame" x="5" y="54" width="404" height="730"/>
+                                <rect key="frame" x="5" y="54" width="404" height="762"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="j8B-9s-QhQ">
-                                        <rect key="frame" x="8" y="8" width="388" height="175"/>
+                                        <rect key="frame" x="8" y="8" width="388" height="183"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-2R-s38">
-                                                <rect key="frame" x="0.0" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="DwT-It-QEb"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ofl-sC-SqG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAF-25-jvX">
-                                                <rect key="frame" x="131" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="LrO-hX-hsu"/>
-                                                </constraints>
+                                                <rect key="frame" x="131" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eEL-eG-kqR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwE-ms-lrr">
-                                                <rect key="frame" x="262" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="zWW-3J-Ajb"/>
-                                                </constraints>
+                                                <rect key="frame" x="262" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kkd-5g-JC9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="AwE-ms-lrr" secondAttribute="bottom" id="9k3-lT-pyJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="LAF-25-jvX" secondAttribute="bottom" id="O9u-L4-TWt"/>
+                                            <constraint firstAttribute="bottom" secondItem="l4G-2R-s38" secondAttribute="bottom" id="Qwv-W2-mRp"/>
+                                            <constraint firstItem="l4G-2R-s38" firstAttribute="top" secondItem="j8B-9s-QhQ" secondAttribute="top" id="RdH-rm-DKa"/>
+                                            <constraint firstItem="AwE-ms-lrr" firstAttribute="top" secondItem="j8B-9s-QhQ" secondAttribute="top" id="o5S-xj-vVG"/>
+                                            <constraint firstItem="LAF-25-jvX" firstAttribute="top" secondItem="j8B-9s-QhQ" secondAttribute="top" id="yt4-Ht-gBb"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-DZ-0JP">
-                                        <rect key="frame" x="8" y="188" width="388" height="174.5"/>
+                                        <rect key="frame" x="8" y="196" width="388" height="182.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waC-mT-VNZ">
-                                                <rect key="frame" x="0.0" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="j1i-nv-QfW"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kUO-J4-Da9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-fO-leo">
-                                                <rect key="frame" x="131" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="l2X-IN-em3"/>
-                                                </constraints>
+                                                <rect key="frame" x="131" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aKH-5s-bM7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAh-ic-fcg">
-                                                <rect key="frame" x="262" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="lj4-qX-TLQ"/>
-                                                </constraints>
+                                                <rect key="frame" x="262" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ygh-Fe-mrn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="waC-mT-VNZ" secondAttribute="bottom" id="AyI-TP-VVV"/>
+                                            <constraint firstItem="z6R-fO-leo" firstAttribute="top" secondItem="1Na-DZ-0JP" secondAttribute="top" id="F6K-VX-4u4"/>
+                                            <constraint firstAttribute="bottom" secondItem="z6R-fO-leo" secondAttribute="bottom" id="TUW-8d-V8i"/>
+                                            <constraint firstItem="waC-mT-VNZ" firstAttribute="top" secondItem="1Na-DZ-0JP" secondAttribute="top" id="nZT-gT-xHc"/>
+                                            <constraint firstItem="sAh-ic-fcg" firstAttribute="top" secondItem="1Na-DZ-0JP" secondAttribute="top" id="y9k-H2-ktq"/>
+                                            <constraint firstAttribute="bottom" secondItem="sAh-ic-fcg" secondAttribute="bottom" id="ygh-rz-0Ug"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="l32-Z8-lMR">
-                                        <rect key="frame" x="8" y="367.5" width="388" height="175"/>
+                                        <rect key="frame" x="8" y="383.5" width="388" height="183"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-A2-bzX">
-                                                <rect key="frame" x="0.0" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="HBF-gi-LxB"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmo-6F-0Nz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-KY-OJO">
-                                                <rect key="frame" x="131" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="K1q-xe-btO"/>
-                                                </constraints>
+                                                <rect key="frame" x="131" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SW7-rv-sql"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-zv-jup">
-                                                <rect key="frame" x="262" y="25.5" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="FWU-9G-HAy"/>
-                                                </constraints>
+                                                <rect key="frame" x="262" y="0.0" width="126" height="183"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PWk-eQ-rF9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="jvY-KY-OJO" secondAttribute="bottom" id="Taz-lS-nNN"/>
+                                            <constraint firstItem="jvY-KY-OJO" firstAttribute="top" secondItem="l32-Z8-lMR" secondAttribute="top" id="ZAh-qB-d0t"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hhm-zv-jup" secondAttribute="bottom" id="qJX-oW-VQr"/>
+                                            <constraint firstItem="yw4-A2-bzX" firstAttribute="top" secondItem="l32-Z8-lMR" secondAttribute="top" id="spy-On-TQq"/>
+                                            <constraint firstItem="Hhm-zv-jup" firstAttribute="top" secondItem="l32-Z8-lMR" secondAttribute="top" id="zoo-4I-NAG"/>
+                                            <constraint firstAttribute="bottom" secondItem="yw4-A2-bzX" secondAttribute="bottom" id="zqF-nb-MnR"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BHq-w1-2Qp">
-                                        <rect key="frame" x="8" y="547.5" width="388" height="174.5"/>
+                                        <rect key="frame" x="8" y="571.5" width="388" height="182.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5Y-FI-OyN">
-                                                <rect key="frame" x="0.0" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="CQ9-5M-XcN"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tl7-Jw-rSm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKI-Jt-8Og">
-                                                <rect key="frame" x="131" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="oof-p1-TQG"/>
-                                                </constraints>
+                                                <rect key="frame" x="131" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WLO-6d-s6K"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WT5-VJ-NyZ">
-                                                <rect key="frame" x="262" y="25" width="126" height="124"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="meD-YB-PVv"/>
-                                                </constraints>
+                                                <rect key="frame" x="262" y="0.0" width="126" height="182.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <connections>
                                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5FB-Ar-MFK"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="WT5-VJ-NyZ" secondAttribute="bottom" id="BRB-Ja-hDk"/>
+                                            <constraint firstItem="WT5-VJ-NyZ" firstAttribute="top" secondItem="BHq-w1-2Qp" secondAttribute="top" id="Fgx-4c-2kz"/>
+                                            <constraint firstAttribute="bottom" secondItem="RKI-Jt-8Og" secondAttribute="bottom" id="MCr-v2-RaJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="e5Y-FI-OyN" secondAttribute="bottom" id="TFr-AR-rG1"/>
+                                            <constraint firstItem="RKI-Jt-8Og" firstAttribute="top" secondItem="BHq-w1-2Qp" secondAttribute="top" id="TW1-ak-mmy"/>
+                                            <constraint firstItem="e5Y-FI-OyN" firstAttribute="top" secondItem="BHq-w1-2Qp" secondAttribute="top" id="pLg-WU-yxm"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -171,8 +170,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="657-he-QTd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d0l-Ew-Uas" secondAttribute="bottom" constant="24" id="H5v-lZ-R2B"/>
-                            <constraint firstItem="d0l-Ew-Uas" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="24" id="YzQ-jA-jKg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d0l-Ew-Uas" secondAttribute="bottom" constant="14" id="H5v-lZ-R2B"/>
+                            <constraint firstItem="d0l-Ew-Uas" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="YzQ-jA-jKg"/>
                             <constraint firstItem="d0l-Ew-Uas" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jcL-a6-06e"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="rsS-Uw-upw"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="uAa-64-8rT"/>
