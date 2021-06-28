@@ -13,11 +13,9 @@ class ViewController: UIViewController {
         cards = []
         cards = cardsGenerator()
         renderCards()
-        inGameCards = pickInGameCards(amount: 12)
+        inGameCards = pickInGameCards(amount: 15)
         updateViewFromModel()
-//        inGameCards = pickInGameCards(amount: 3)
     }
-    
     @IBOutlet var cardButtons: [UIButton]!
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
@@ -25,6 +23,10 @@ class ViewController: UIViewController {
         } else {
             print("Choosen card not in cardButtons")
         }
+    }
+    @IBOutlet weak var addCardsStackView: UIStackView!
+    @IBAction func addCardsButton(_ sender: UIButton) {
+        addCards()
     }
     
     var cards = [Card]()
@@ -66,6 +68,7 @@ class ViewController: UIViewController {
     }
     
     func renderCards() {
+        addCardsStackView.isHidden = true
         for index in cardButtons.indices {
             cardButtons[index].layer.borderWidth = 3.0
             cardButtons[index].layer.borderColor = UIColor.gray.cgColor
@@ -106,10 +109,12 @@ class ViewController: UIViewController {
         }
     }
     
-//TODO
-    func cardsIndication() {
-        //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
+    func addCards() {
+        addCardsStackView.isHidden = false
     }
+    
+//TODO: Requirements
+    //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
     
     //You will also need a “Deal 3 More Cards” button (as per the rules of Set).
     //When the Deal 3 More Cards button is pressed either a) replace the selected cards if they are a match or b) add 3 cards to the game.
