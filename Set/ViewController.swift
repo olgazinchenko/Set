@@ -110,7 +110,9 @@ class ViewController: UIViewController {
     }
     
     func addCards() {
-        addCardsStackView.isHidden = false
+        UIView.animate(withDuration: 0.5, animations:  {
+            self.addCardsStackView.isHidden = false
+        })
     }
     
 //TODO: Requirements
