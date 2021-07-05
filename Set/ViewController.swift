@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private var game = Game()
 
     override func viewDidLoad() {
-        cards = []
-        cards = cardsGenerator()
         renderCards()
-        inGameCards = pickInGameCards(amount: cardButtons.count)
+        game.inGameCards = game.pickInGameCards(amount: cardButtons.count)
         updateViewFromModel()
         hideAdditionalCards()
     }
@@ -32,47 +32,9 @@ class ViewController: UIViewController {
         addCards()
     }
     
-    var cards = [Card]()
-    var shapes: [Character] = ["▲","●","■"]
-    var colors: [UIColor] = [
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.15),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.15),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.15),
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.5),
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
-    ]
-    var numberOfShapes = 3
-    var index = 0
-    func cardsGenerator() -> [Card] {
-        //The method generates an array of 81 cards
-            for shape in shapes {
-                for color in colors {
-                    for number in 1...numberOfShapes {
-                        cards += [Card(identifier: index, color: color, shape: shape, numberOfShapes: number)]
-                        index += 1
-                    }
-                }
-            }
-        return cards
-    }
-    
-    var inGameCards = [Card]()
-    func pickInGameCards(amount: Int) -> [Card] {
-        for _ in 0...amount - 1 {
-            let randomCardIndex = cards.indices.randomElement()!
-            inGameCards.append(cards[randomCardIndex])
-            cards.remove(at: randomCardIndex)
-        }
-    return inGameCards
-    }
-    
     func renderCards() {
         for index in cardButtons.indices {
-            cardButtons[index].layer.borderWidth = 3.0
+            cardButtons[index].layer.borderWidth = 2.0
             cardButtons[index].layer.borderColor = UIColor.gray.cgColor
             cardButtons[index].layer.cornerRadius = 8.0
         }
@@ -87,7 +49,7 @@ class ViewController: UIViewController {
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
-            let card = inGameCards[index]
+            let card = game.inGameCards[index]
             if card.numberOfShapes == 1 {
                 button.setTitle(String(card.shape), for: UIControl.State.normal)
             } else if card.numberOfShapes == 2 {
@@ -98,21 +60,21 @@ class ViewController: UIViewController {
             button.setTitleColor(card.color, for: UIControl.State.normal)
         }
     }
-    
+        
     func selectAndDeselecCards(by index: Int){
         var selectedCardsNumber = 0
-        for index in inGameCards.indices {
-            if inGameCards[index].isSelected == true {
+        for index in game.inGameCards.indices {
+            if game.inGameCards[index].isSelected == true {
                 selectedCardsNumber += 1
             }
         }
         if cardButtons[index].layer.borderColor == UIColor.gray.cgColor, selectedCardsNumber < 3  {
             cardButtons[index].layer.borderColor = UIColor.green.cgColor
-            inGameCards[index].isSelected = true
+            game.inGameCards[index].isSelected = true
         }
         else {
             cardButtons[index].layer.borderColor = UIColor.gray.cgColor
-            inGameCards[index].isSelected = false
+            game.inGameCards[index].isSelected = false
             selectedCardsNumber -= 1
         }
     }
@@ -127,7 +89,7 @@ class ViewController: UIViewController {
             }
         })
     }
-    
+
 //TODO: Requirements
     //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
     
@@ -141,7 +103,6 @@ class ViewController: UIViewController {
     //array with cards on the field and array selected 3 cards
     
     required init?(coder aDecoder: NSCoder) {
-        self.cards = [Card]()
         super.init(coder: aDecoder)
     }
 }
