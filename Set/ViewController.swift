@@ -116,9 +116,17 @@ class ViewController: UIViewController {
                             {self.view.backgroundColor = UIColor.red})
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
+            renderCards()
+            deselectAllCards()
             }
     }
-
+    
+    func deselectAllCards() {
+        for index in game.inGameCards.indices {
+            game.inGameCards[index].isSelected = false
+        }
+    }
+    
 //TODO: Requirements
     //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
     
