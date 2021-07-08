@@ -17,10 +17,14 @@ class ViewController: UIViewController {
         updateViewFromModel()
         hideAdditionalCards()
     }
+
     @IBOutlet var cardButtons: [UIButton]!
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             selectAndDeselecCards(by: cardNumber)
+            let selectedCardsInGame = selectedCards()
+            let isSet = game.isSet(selectedCards: selectedCardsInGame)
+            inticateIsSetResult(isSetResult: isSet)
         } else {
             print("Choosen card not in cardButtons")
         }
@@ -76,8 +80,8 @@ class ViewController: UIViewController {
             cardButtons[index].layer.borderColor = UIColor.gray.cgColor
             game.inGameCards[index].isSelected = false
             selectedCardsNumber -= 1
+            }
         }
-    }
     
     func addCards() {
         UIView.animate(withDuration: 0.5, animations:  {
@@ -89,9 +93,39 @@ class ViewController: UIViewController {
             }
         })
     }
+    
+    func selectedCards() -> [Card] {
+        var selectedCards = [Card]()
+        for index in game.inGameCards.indices {
+            if game.inGameCards[index].isSelected == true {
+                selectedCards.append(game.inGameCards[index])
+        }
+    }
+    return selectedCards
+    }
+    
+    func inticateIsSetResult(isSetResult: Bool) {
+        let selectedCardsCount = selectedCards().count
+        if isSetResult == true, selectedCardsCount == 3 {
+            UIView.animate(withDuration: 1, animations:
+                            {self.view.backgroundColor = UIColor.green})
+            UIView.animate(withDuration: 1, animations:
+                            {self.view.backgroundColor = UIColor.white})
+        } else if isSetResult == false, selectedCardsCount == 3 {
+            UIView.animate(withDuration: 1, animations:
+                            {self.view.backgroundColor = UIColor.red})
+            UIView.animate(withDuration: 1, animations:
+                            {self.view.backgroundColor = UIColor.white})
+            }
+    }
 
 //TODO: Requirements
     //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
+    
+    //if non-maching Set - deselect those 3 non-matching cards and then select the chosen card
+    //if 3 matching Set cards selected, replace those 3 matching Set cards with new ones from the deck of 81 Set cards.
+    //if the deck is empty then matched cards can’t be replaced, but they should be hidden in the UI.
+    //if the card that was chosen was one of the 3 matching cards, then no card should be selected (since the selected card was either replaced or is no longer visible in the UI).
     
     //You will also need a “Deal 3 More Cards” button (as per the rules of Set).
     //When the Deal 3 More Cards button is pressed either a) replace the selected cards if they are a match or b) add 3 cards to the game.

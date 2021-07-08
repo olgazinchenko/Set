@@ -48,22 +48,20 @@ struct Game {
     return inGameCards
     }
     
-    mutating func isSet(in selectedCards:[Card]) -> Bool {
+    mutating func isSet(selectedCards: [Card]) -> Bool {
         var isSet = false
-        for _ in selectedCards.indices {
-            if selectedCards[0].color == selectedCards[1].color && selectedCards[1].color == selectedCards[2].color {
-                isSet = true
+        if selectedCards.count == 3, selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
+            isSet = true
+        } else {
+            isSet = false
             }
-        }
-        return isSet
+    return isSet
     }
     
     init() {
         cards = cardsGenerator()
     }
+    
+    //TODO: Requirements
         //checking 3 cards maching
-        //if non-maching Set - deselect those 3 non-matching cards and then select the chosen card
-        //if 3 matching Set cards selected, replace those 3 matching Set cards with new ones from the deck of 81 Set cards.
-        //if the deck is empty then matched cards can’t be replaced, but they should be hidden in the UI.
-        //if the card that was chosen was one of the 3 matching cards, then no card should be selected (since the selected card was either replaced or is no longer visible in the UI).
 }
