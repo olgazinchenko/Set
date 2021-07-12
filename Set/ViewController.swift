@@ -25,13 +25,15 @@ class ViewController: UIViewController {
             let selectedCardsInGame = selectedCards()
             let isSet = game.isSet(selectedCards: selectedCardsInGame)
             inticateIsSetResult(isSetResult: isSet)
+            if isSet {
+                replaceMatchingSetCards(isSetResult: isSet)
+            }
         } else {
             print("Choosen card not in cardButtons")
         }
     }
     @IBOutlet weak var addCardsStackView: UIStackView!
     @IBOutlet var addCardsStackViews: [UIStackView]!
-    
     @IBAction func addCardsButton(_ sender: UIButton) {
         addCards()
     }
@@ -127,10 +129,23 @@ class ViewController: UIViewController {
         }
     }
     
-//TODO: Requirements
-    //After 3 cards have been selected, you must indicate whether those 3 cards are a match or a mismatch (per Set rules). You can do this with coloration or however you choose, but it should be clear to the user whether the 3 cards they selected match or not.
+    func replaceMatchingSetCards(isSetResult: Bool) {
+        if isSetResult {
+            for index in game.inGameCards.indices {
+                if game.inGameCards[index].isSelected {
+                    if let pickedInGameCardIndex = game.cards.indices.randomElement() {
+                        game.inGameCards[index] = game.cards.remove(at: pickedInGameCardIndex)
+                    }
+                }
+            }
+            updateViewFromModel()
+            deselectAllCards()
+            renderCards()
+        }
+    }
     
-    //if non-maching Set - deselect those 3 non-matching cards and then select the chosen card
+//TODO: Requirements
+    
     //if 3 matching Set cards selected, replace those 3 matching Set cards with new ones from the deck of 81 Set cards.
     //if the deck is empty then matched cards can’t be replaced, but they should be hidden in the UI.
     //if the card that was chosen was one of the 3 matching cards, then no card should be selected (since the selected card was either replaced or is no longer visible in the UI).
@@ -141,8 +156,6 @@ class ViewController: UIViewController {
     //The Deal 3 More Cards button should be disabled if there are a) no more cards in the Set deck or b) no more room in the UI to fit 3 more cards (note that there is always room for 3 more cards if the 3 currently-selected cards are a match since you replace them).
     
     //Like you did for Concentration, you must have a New Game button and show the Score in the UI. It is up to you how you want to score your Set game. For example, you could give 3 points for a match and -5 for a mismatch and maybe even -1 for a deselection. Perhaps fewer points are scored depending on how many cards are on the table (i.e. how many times Deal 3 More Cards has been touched). Whatever you think best evaluates how well the player is playing.
-
-    //array with cards on the field and array selected 3 cards
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

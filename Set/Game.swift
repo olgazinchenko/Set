@@ -39,7 +39,7 @@ struct Game {
     }
     
     var inGameCards = [Card]()
-    mutating func pickInGameCards(amount: Int) -> [Card] {
+    mutating func pickInGameCards(amount: Int) -> [Card]{
         for _ in 0...amount - 1 {
             let randomCardIndex = cards.indices.randomElement()!
             inGameCards.append(cards[randomCardIndex])
