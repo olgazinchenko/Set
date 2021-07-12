@@ -23,7 +23,7 @@
                                 </constraints>
                                 <state key="normal" title="Add cards"/>
                                 <connections>
-                                    <action selector="addCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gxC-sd-sLW"/>
+                                    <action selector="touchAddCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gxC-sd-sLW"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nP6-93-lJ8">
@@ -317,6 +317,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCardsButton" destination="d0l-Ew-Uas" id="WO6-BA-pU0"/>
                         <outlet property="addCardsStackView" destination="ITl-SN-fIp" id="QLH-AL-bwO"/>
                         <outletCollection property="cardButtons" destination="LAF-25-jvX" collectionClass="NSMutableArray" id="rM8-55-xPu"/>
                         <outletCollection property="cardButtons" destination="AwE-ms-lrr" collectionClass="NSMutableArray" id="3gB-PW-8h4"/>

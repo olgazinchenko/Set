@@ -34,8 +34,10 @@ class ViewController: UIViewController {
     }
     @IBOutlet weak var addCardsStackView: UIStackView!
     @IBOutlet var addCardsStackViews: [UIStackView]!
-    @IBAction func addCardsButton(_ sender: UIButton) {
+    @IBOutlet weak var addCardsButton: UIButton!
+    @IBAction func touchAddCardsButton(_ sender: UIButton) {
         addCards()
+        disableAddCardsButton()
     }
     
     func renderCards() {
@@ -96,6 +98,18 @@ class ViewController: UIViewController {
         })
     }
     
+    func disableAddCardsButton() {
+        var isHiddenStackViewsCount = 0
+        for index in self.addCardsStackViews.indices {
+            if self.addCardsStackViews[index].isHidden {
+                isHiddenStackViewsCount += 1
+            }
+        }
+        if isHiddenStackViewsCount == 0 {
+            self.addCardsButton.isEnabled = false
+        }
+    }
+    
     func selectedCards() -> [Card] {
         var selectedCards = [Card]()
         for index in game.inGameCards.indices {
@@ -146,12 +160,8 @@ class ViewController: UIViewController {
     
 //TODO: Requirements
     
-    //if 3 matching Set cards selected, replace those 3 matching Set cards with new ones from the deck of 81 Set cards.
     //if the deck is empty then matched cards can’t be replaced, but they should be hidden in the UI.
     //if the card that was chosen was one of the 3 matching cards, then no card should be selected (since the selected card was either replaced or is no longer visible in the UI).
-    
-    //You will also need a “Deal 3 More Cards” button (as per the rules of Set).
-    //When the Deal 3 More Cards button is pressed either a) replace the selected cards if they are a match or b) add 3 cards to the game.
     
     //The Deal 3 More Cards button should be disabled if there are a) no more cards in the Set deck or b) no more room in the UI to fit 3 more cards (note that there is always room for 3 more cards if the 3 currently-selected cards are a match since you replace them).
     
