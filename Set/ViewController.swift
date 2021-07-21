@@ -133,6 +133,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
             renderCards()
+            hideMachingCardsWhenDeckIsEmpty()
             deselectAllCards()
             }
     }
@@ -152,18 +153,24 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            hideMachingCardsWhenDeckIsEmpty()
             updateViewFromModel()
             deselectAllCards()
             renderCards()
         }
     }
     
+    func hideMachingCardsWhenDeckIsEmpty() {
+        if game.cards == [] {
+            for index in cardButtons.indices {
+                if cardButtons[index].layer.borderColor == UIColor.green.cgColor {
+                    cardButtons[index].isHidden = true
+                }
+            }
+        }
+    }
+    
 //TODO: Requirements
-    
-    //if the deck is empty then matched cards can’t be replaced, but they should be hidden in the UI.
-    //if the card that was chosen was one of the 3 matching cards, then no card should be selected (since the selected card was either replaced or is no longer visible in the UI).
-    
-    //The Deal 3 More Cards button should be disabled if there are a) no more cards in the Set deck or b) no more room in the UI to fit 3 more cards (note that there is always room for 3 more cards if the 3 currently-selected cards are a match since you replace them).
     
     //Like you did for Concentration, you must have a New Game button and show the Score in the UI. It is up to you how you want to score your Set game. For example, you could give 3 points for a match and -5 for a mismatch and maybe even -1 for a deselection. Perhaps fewer points are scored depending on how many cards are on the table (i.e. how many times Deal 3 More Cards has been touched). Whatever you think best evaluates how well the player is playing.
     

@@ -61,7 +61,4 @@ struct Game {
     init() {
         cards = cardsGenerator()
     }
-    
-    //TODO: Requirements
-        //checking 3 cards maching
 }

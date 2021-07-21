@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-struct Card {
+struct Card: Equatable {
     var identifier: Int
     var color: UIColor
     var shape: Character
