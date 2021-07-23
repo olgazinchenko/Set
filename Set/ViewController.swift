@@ -42,9 +42,17 @@ class ViewController: UIViewController {
     
     func renderCards() {
         for index in cardButtons.indices {
-            cardButtons[index].layer.borderWidth = 2.0
-            cardButtons[index].layer.borderColor = UIColor.gray.cgColor
-            cardButtons[index].layer.cornerRadius = 8.0
+            if game.cards == [], cardButtons[index].layer.borderColor == UIColor.green.cgColor {
+                        cardButtons[index].isEnabled = false
+            } else if cardButtons[index].isEnabled {
+                cardButtons[index].layer.borderWidth = 2.0
+                cardButtons[index].layer.borderColor = UIColor.gray.cgColor
+                cardButtons[index].layer.cornerRadius = 8.0
+            }
+            if cardButtons[index].isEnabled == false {
+                cardButtons[index].setTitle("", for: UIControl.State.normal)
+                cardButtons[index].layer.borderWidth = 0
+            }
         }
     }
     
@@ -67,6 +75,7 @@ class ViewController: UIViewController {
             }
             button.setTitleColor(card.color, for: UIControl.State.normal)
         }
+        renderCards()
     }
         
     func selectAndDeselecCards(by index: Int){
@@ -133,7 +142,6 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
             renderCards()
-            hideMachingCardsWhenDeckIsEmpty()
             deselectAllCards()
             }
     }
@@ -153,20 +161,8 @@ class ViewController: UIViewController {
                     }
                 }
             }
-            hideMachingCardsWhenDeckIsEmpty()
             updateViewFromModel()
             deselectAllCards()
-            renderCards()
-        }
-    }
-    
-    func hideMachingCardsWhenDeckIsEmpty() {
-        if game.cards == [] {
-            for index in cardButtons.indices {
-                if cardButtons[index].layer.borderColor == UIColor.green.cgColor {
-                    cardButtons[index].isHidden = true
-                }
-            }
         }
     }
     
