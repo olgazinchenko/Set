@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             selectAndDeselecCards(by: cardNumber)
             let selectedCardsInGame = selectedCards()
-            let isSet = game.isSet(selectedCards: selectedCardsInGame)
+            isSet = game.isSet(selectedCards: selectedCardsInGame)
             inticateIsSetResult(isSetResult: isSet)
             if isSet {
                 replaceMatchingSetCards(isSetResult: isSet)
@@ -40,9 +40,10 @@ class ViewController: UIViewController {
         disableAddCardsButton()
     }
     
+    var isSet = false
     func renderCards() {
         for index in cardButtons.indices {
-            if game.cards == [], cardButtons[index].layer.borderColor == UIColor.green.cgColor {
+            if isSet, game.cards == [], cardButtons[index].layer.borderColor == UIColor.green.cgColor {
                         cardButtons[index].isEnabled = false
             } else if cardButtons[index].isEnabled {
                 cardButtons[index].layer.borderWidth = 2.0
