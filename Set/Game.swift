@@ -50,11 +50,24 @@ struct Game {
     
     mutating func isSet(selectedCards: [Card]) -> Bool {
         var isSet = false
-        if selectedCards.count == 3, selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
+        let selectedCardsCount = selectedCards.count
+        var allShapesAreSame = false
+        var allShapesAreDifferent = false
+        var equalNumberOfShapes = false
+        var unequalNumberOfShapes = false
+        if selectedCardsCount == 3, selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
+            allShapesAreSame = true
+        } else if selectedCardsCount == 3, selectedCards[0].shape != selectedCards[1].shape, selectedCards[1].shape != selectedCards[2].shape, selectedCards[0].shape != selectedCards[2].shape {
+            allShapesAreDifferent = true
+        }
+        if selectedCardsCount == 3, selectedCards[0].numberOfShapes == selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes == selectedCards[2].numberOfShapes {
+            equalNumberOfShapes = true
+        } else if selectedCardsCount == 3, selectedCards[0].numberOfShapes != selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes != selectedCards[2].numberOfShapes, selectedCards[0].numberOfShapes != selectedCards[2].numberOfShapes {
+            unequalNumberOfShapes = true
+        }
+        if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes {
             isSet = true
-        } else {
-            isSet = false
-            }
+        }
     return isSet
     }
     
