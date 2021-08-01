@@ -49,6 +49,8 @@ struct Game {
         var allShapesAreDifferent = false
         var equalNumberOfShapes = false
         var unequalNumberOfShapes = false
+        var allShadesAreSame = false
+        var allShadesAreDifferent = false
         if selectedCardsCount == 3 {
             if selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
                 allShapesAreSame = true
@@ -61,8 +63,14 @@ struct Game {
             } else if selectedCards[0].numberOfShapes != selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes != selectedCards[2].numberOfShapes, selectedCards[0].numberOfShapes != selectedCards[2].numberOfShapes {
                 unequalNumberOfShapes = true
             }
+            if selectedCards[0].shade == selectedCards[1].shade, selectedCards[1].shade == selectedCards[2].shade {
+                allShadesAreSame = true
+            }
+            if selectedCards[0].shade != selectedCards[1].shade, selectedCards[1].shade != selectedCards[2].shade, selectedCards[0].shade != selectedCards[2].shade {
+                allShadesAreDifferent = true
+            }
         }
-        if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes {
+        if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes, allShadesAreSame || allShadesAreDifferent {
             isSet = true
         }
     return isSet
