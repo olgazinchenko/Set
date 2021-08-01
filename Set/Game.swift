@@ -13,25 +13,19 @@ struct Game {
     var cards = [Card]()
     var numberOfShapes = 3
     var shapes: [Character] = ["▲","●","■"]
-    var colors: [UIColor] = [
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.15),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.15),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.15),
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.5),
-        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
-    ]
+    var colors = ["red", "green", "purple"]
+    var shades = ["solid", "striped", "open"]
     var index = 0
+    
     mutating func cardsGenerator() -> [Card] {
         //The method generates an array of 81 cards
             for shape in shapes {
                 for color in colors {
                     for number in 1...numberOfShapes {
-                        cards += [Card(identifier: index, color: color, shape: shape, numberOfShapes: number)]
-                        index += 1
+                        for shade in shades {
+                            cards += [Card(identifier: index, color: color, shade: shade, shape: shape, numberOfShapes: number)]
+                            index += 1
+                        }
                     }
                 }
             }
@@ -55,15 +49,18 @@ struct Game {
         var allShapesAreDifferent = false
         var equalNumberOfShapes = false
         var unequalNumberOfShapes = false
-        if selectedCardsCount == 3, selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
-            allShapesAreSame = true
-        } else if selectedCardsCount == 3, selectedCards[0].shape != selectedCards[1].shape, selectedCards[1].shape != selectedCards[2].shape, selectedCards[0].shape != selectedCards[2].shape {
-            allShapesAreDifferent = true
-        }
-        if selectedCardsCount == 3, selectedCards[0].numberOfShapes == selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes == selectedCards[2].numberOfShapes {
-            equalNumberOfShapes = true
-        } else if selectedCardsCount == 3, selectedCards[0].numberOfShapes != selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes != selectedCards[2].numberOfShapes, selectedCards[0].numberOfShapes != selectedCards[2].numberOfShapes {
-            unequalNumberOfShapes = true
+        if selectedCardsCount == 3 {
+            if selectedCards[0].shape == selectedCards[1].shape, selectedCards[1].shape == selectedCards[2].shape {
+                allShapesAreSame = true
+            }
+            if selectedCards[0].shape != selectedCards[1].shape, selectedCards[1].shape != selectedCards[2].shape, selectedCards[0].shape != selectedCards[2].shape {
+                allShapesAreDifferent = true
+            }
+            if selectedCards[0].numberOfShapes == selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes == selectedCards[2].numberOfShapes {
+                equalNumberOfShapes = true
+            } else if selectedCards[0].numberOfShapes != selectedCards[1].numberOfShapes, selectedCards[1].numberOfShapes != selectedCards[2].numberOfShapes, selectedCards[0].numberOfShapes != selectedCards[2].numberOfShapes {
+                unequalNumberOfShapes = true
+            }
         }
         if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes {
             isSet = true

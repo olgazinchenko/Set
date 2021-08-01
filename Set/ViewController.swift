@@ -74,7 +74,35 @@ class ViewController: UIViewController {
             } else {
                 button.setTitle(String(card.shape) + String(card.shape) + String(card.shape), for: UIControl.State.normal)
             }
-            button.setTitleColor(card.color, for: UIControl.State.normal)
+            var color = UIColor()
+            if card.color == "red", card.shade == "solid" {
+                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            }  else if card.color == "red", card.shade == "striped" {
+                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "red", card.shade == "open" {
+                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.15)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "green", card.shade == "solid" {
+                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "green", card.shade == "striped" {
+                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "green", card.shade == "open" {
+                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.15)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "purple", card.shade == "solid" {
+                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "purple", card.shade == "striped" {
+                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.5)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            } else if card.color == "purple", card.shade == "open" {
+                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.15)
+                button.setTitleColor(color, for: UIControl.State.normal)
+            }
         }
         renderCards()
     }

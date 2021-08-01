@@ -11,7 +11,8 @@ import UIKit
 
 struct Card: Equatable {
     var identifier: Int
-    var color: UIColor
+    var color: String
+    var shade: String
     var shape: Character
     var numberOfShapes: Int
     var isSelected: Bool = false
