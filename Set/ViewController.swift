@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         addCards()
         disableAddCardsButton()
     }
+    @IBAction func touchNewGameButton(_ sender: UIButton) {
+    }
     
     var isSet = false
     func renderCards() {

@@ -304,14 +304,27 @@
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB5-Pe-n7X">
+                                <rect key="frame" x="321" y="824" width="73" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="KY6-xO-7Jc"/>
+                                </constraints>
+                                <state key="normal" title="New game"/>
+                                <connections>
+                                    <action selector="touchNewGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dbe-lj-WWH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="657-he-QTd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d0l-Ew-Uas" secondAttribute="bottom" constant="14" id="H5v-lZ-R2B"/>
+                            <constraint firstItem="bB5-Pe-n7X" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="V4K-PH-rbO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bB5-Pe-n7X" secondAttribute="bottom" constant="14" id="Wo4-NR-T0r"/>
                             <constraint firstItem="d0l-Ew-Uas" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="YzQ-jA-jKg"/>
                             <constraint firstItem="d0l-Ew-Uas" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jcL-a6-06e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bB5-Pe-n7X" secondAttribute="trailing" constant="20" id="nVH-Xd-60l"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="rsS-Uw-upw"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="uAa-64-8rT"/>
                         </constraints>
@@ -351,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1884" y="-92"/>
+            <point key="canvasLocation" x="-1884.057971014493" y="-92.410714285714278"/>
         </scene>
     </scenes>
     <resources>
