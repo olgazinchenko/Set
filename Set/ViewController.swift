@@ -12,10 +12,7 @@ class ViewController: UIViewController {
     private var game = Game()
 
     override func viewDidLoad() {
-        renderCards()
-        game.inGameCards = game.pickInGameCards(amount: cardButtons.count)
-        updateViewFromModel()
-        hideAdditionalCards()
+        startNewGame()
     }
 
     @IBOutlet var cardButtons: [UIButton]!
@@ -40,6 +37,7 @@ class ViewController: UIViewController {
         disableAddCardsButton()
     }
     @IBAction func touchNewGameButton(_ sender: UIButton) {
+        startNewGame()
     }
     
     var isSet = false
@@ -195,6 +193,14 @@ class ViewController: UIViewController {
             updateViewFromModel()
             deselectAllCards()
         }
+    }
+    
+    func startNewGame() {
+        game = Game()
+        renderCards()
+        game.inGameCards = game.pickInGameCards(amount: cardButtons.count)
+        updateViewFromModel()
+        hideAdditionalCards()
     }
     
 //TODO: Requirements
