@@ -80,7 +80,7 @@ struct Game {
             }
         }
         if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes, allShadesAreSame || allShadesAreDifferent, allColorsAreSame || allColorsAreDifferent {
-            isSet = trueg
+            isSet = true
         }
     return isSet
     }
