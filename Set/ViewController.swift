@@ -24,6 +24,7 @@ class ViewController: UIViewController {
             inticateIsSetResult(isSetResult: isSet)
             if isSet {
                 replaceMatchingSetCards(isSetResult: isSet)
+
             }
         } else {
             print("Choosen card not in cardButtons")
@@ -35,10 +36,13 @@ class ViewController: UIViewController {
     @IBAction func touchAddCardsButton(_ sender: UIButton) {
         addCards()
         disableAddCardsButton()
+        game.addOnePointPenaltyToScore()
+        updateScoreLabel()
     }
     @IBAction func touchNewGameButton(_ sender: UIButton) {
         startNewGame()
     }
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var isSet = false
     func renderCards() {
@@ -105,6 +109,11 @@ class ViewController: UIViewController {
             }
         }
         renderCards()
+        updateScoreLabel()
+    }
+    
+    func updateScoreLabel() {
+        scoreLabel.text = "Score: \(game.score)"
     }
         
     func selectAndDeselecCards(by index: Int){
@@ -146,6 +155,10 @@ class ViewController: UIViewController {
         if isHiddenStackViewsCount == 0 {
             self.addCardsButton.isEnabled = false
         }
+    }
+    
+    func enableAddCardsButton() {
+        self.addCardsButton.isEnabled = true
     }
     
     func selectedCards() -> [Card] {
@@ -201,6 +214,8 @@ class ViewController: UIViewController {
         game.inGameCards = game.pickInGameCards(amount: cardButtons.count)
         updateViewFromModel()
         hideAdditionalCards()
+        game.resetTheScore()
+        enableAddCardsButton()
     }
     
 //TODO: Requirements

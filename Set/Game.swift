@@ -16,6 +16,7 @@ struct Game {
     var colors = ["red", "green", "purple"]
     var shades = ["solid", "striped", "open"]
     var index = 0
+    var score = 0
     
     mutating func cardsGenerator() -> [Card] {
         //The method generates an array of 81 cards
@@ -79,9 +80,25 @@ struct Game {
             }
         }
         if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes, allShadesAreSame || allShadesAreDifferent, allColorsAreSame || allColorsAreDifferent {
-            isSet = true
+            isSet = trueg
         }
     return isSet
+    }
+    
+    mutating func addTreePointsToScore() {
+        self.score += 3
+    }
+    
+    mutating func addFivePointPenaltiesToScore() {
+        self.score -= 5
+    }
+    
+    mutating func addOnePointPenaltyToScore() {
+        self.score -= 1
+    }
+
+    mutating func resetTheScore() {
+        self.score = 0
     }
     
     init() {

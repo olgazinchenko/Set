@@ -305,7 +305,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB5-Pe-n7X">
-                                <rect key="frame" x="321" y="824" width="73" height="24"/>
+                                <rect key="frame" x="329" y="824" width="73" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="KY6-xO-7Jc"/>
                                 </constraints>
@@ -314,17 +314,26 @@
                                     <action selector="touchNewGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dbe-lj-WWH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8R-BN-hD0">
+                                <rect key="frame" x="12" y="824" width="40" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="M8R-BN-hD0" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="5zv-eJ-Nsx"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="657-he-QTd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d0l-Ew-Uas" secondAttribute="bottom" constant="14" id="H5v-lZ-R2B"/>
                             <constraint firstItem="bB5-Pe-n7X" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="V4K-PH-rbO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bB5-Pe-n7X" secondAttribute="bottom" constant="14" id="Wo4-NR-T0r"/>
                             <constraint firstItem="d0l-Ew-Uas" firstAttribute="top" secondItem="nP6-93-lJ8" secondAttribute="bottom" constant="8" id="YzQ-jA-jKg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="M8R-BN-hD0" secondAttribute="bottom" constant="14" id="eLg-kZ-A7P"/>
+                            <constraint firstItem="M8R-BN-hD0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="iVn-VT-npH"/>
                             <constraint firstItem="d0l-Ew-Uas" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jcL-a6-06e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bB5-Pe-n7X" secondAttribute="trailing" constant="20" id="nVH-Xd-60l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bB5-Pe-n7X" secondAttribute="trailing" constant="12" id="nVH-Xd-60l"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="rsS-Uw-upw"/>
                             <constraint firstItem="nP6-93-lJ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="uAa-64-8rT"/>
                         </constraints>
@@ -332,6 +341,7 @@
                     <connections>
                         <outlet property="addCardsButton" destination="d0l-Ew-Uas" id="WO6-BA-pU0"/>
                         <outlet property="addCardsStackView" destination="ITl-SN-fIp" id="QLH-AL-bwO"/>
+                        <outlet property="scoreLabel" destination="M8R-BN-hD0" id="SHn-4m-L8d"/>
                         <outletCollection property="cardButtons" destination="LAF-25-jvX" collectionClass="NSMutableArray" id="rM8-55-xPu"/>
                         <outletCollection property="cardButtons" destination="AwE-ms-lrr" collectionClass="NSMutableArray" id="3gB-PW-8h4"/>
                         <outletCollection property="cardButtons" destination="l4G-2R-s38" collectionClass="NSMutableArray" id="uvB-8W-vj6"/>
