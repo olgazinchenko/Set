@@ -24,7 +24,9 @@ class ViewController: UIViewController {
             inticateIsSetResult(isSetResult: isSet)
             if isSet {
                 replaceMatchingSetCards(isSetResult: isSet)
-
+            }
+            if selectedCardsInGame.count == 3 {
+                updateScoreLabel()
             }
         } else {
             print("Choosen card not in cardButtons")
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
     @IBAction func touchAddCardsButton(_ sender: UIButton) {
         addCards()
         disableAddCardsButton()
-        game.addOnePointPenaltyToScore()
+        game.addOnePointPenaltyToScoreWhenAddedMoreCards()
         updateScoreLabel()
     }
     @IBAction func touchNewGameButton(_ sender: UIButton) {

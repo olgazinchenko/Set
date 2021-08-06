@@ -78,22 +78,25 @@ struct Game {
             if selectedCards[0].color != selectedCards[1].color, selectedCards[1].color != selectedCards[2].color, selectedCards[0].color != selectedCards[2].color {
                 allColorsAreDifferent = true
             }
-        }
-        if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes, allShadesAreSame || allShadesAreDifferent, allColorsAreSame || allColorsAreDifferent {
-            isSet = true
+            if allShapesAreDifferent || allShapesAreSame, equalNumberOfShapes || unequalNumberOfShapes, allShadesAreSame || allShadesAreDifferent, allColorsAreSame || allColorsAreDifferent {
+                isSet = true
+                addTreePointsToScoreWhenTheSetIsMatch()
+            } else {
+                addFivePointPenaltiesToScoreWhenTheSetIsMismatch()
+            }
         }
     return isSet
     }
     
-    mutating func addTreePointsToScore() {
+    mutating func addTreePointsToScoreWhenTheSetIsMatch() {
         self.score += 3
     }
     
-    mutating func addFivePointPenaltiesToScore() {
+    mutating func addFivePointPenaltiesToScoreWhenTheSetIsMismatch() {
         self.score -= 5
     }
     
-    mutating func addOnePointPenaltyToScore() {
+    mutating func addOnePointPenaltyToScoreWhenAddedMoreCards() {
         self.score -= 1
     }
 
