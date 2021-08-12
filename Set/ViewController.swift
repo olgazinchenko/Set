@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var game = Game()
+    var startTimeOfPlay = Date()
 
     override func viewDidLoad() {
         startNewGame()
@@ -216,8 +217,8 @@ class ViewController: UIViewController {
         game.inGameCards = game.pickInGameCards(amount: cardButtons.count)
         updateViewFromModel()
         hideAdditionalCards()
-        game.resetTheScore()
         enableAddCardsButton()
+        startTimeOfPlay = Date()
     }
     
 //TODO: Requirements
