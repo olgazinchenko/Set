@@ -20,11 +20,13 @@ class ViewController: UIViewController {
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             selectAndDeselecCards(by: cardNumber)
+            startTimeOfPlay = Date()
             let selectedCardsInGame = selectedCards()
             isSet = game.isSet(selectedCards: selectedCardsInGame)
             inticateIsSetResult(isSetResult: isSet)
             if isSet {
                 replaceMatchingSetCards(isSetResult: isSet)
+                addPenaltyToScoreAccordingToSpeedOfPlay(from: startTimeOfPlay)
             }
             if selectedCardsInGame.count == 3 {
                 updateScoreLabel()
@@ -209,6 +211,18 @@ class ViewController: UIViewController {
             updateViewFromModel()
             deselectAllCards()
         }
+    }
+    
+    func addPenaltyToScoreAccordingToSpeedOfPlay(from time: Date) {
+        let speedOfPlay = Date().timeIntervalSince(time)
+        if speedOfPlay >= 60.0 {
+            game.score -= 2
+        } else if speedOfPlay < 60.0, speedOfPlay < 3.0 {
+            game.score -= 1
+        } else if speedOfPlay < 60.0, speedOfPlay >= 3.0 {
+            game.score += 1
+        }
+        updateScoreLabel()
     }
     
     func startNewGame() {

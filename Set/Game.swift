@@ -104,11 +104,6 @@ struct Game {
         self.score = 0
     }
     
-    mutating func countSpeedOfPlay(from time: Date) -> Int {
-        var speedOfPlay = 0
-        return speedOfPlay
-    }
-    
     init() {
         cards = cardsGenerator()
     }
