@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     private var game = Game()
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
             addCardsStackViews[index].isHidden = true
         }
     }
-    
+        
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -85,31 +86,31 @@ class ViewController: UIViewController {
             }
             var color = UIColor()
             if card.color == "red", card.shade == "solid" {
-                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                color = UIColor.red.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
             }  else if card.color == "red", card.shade == "striped" {
-                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+                color = UIColor.red.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "red", card.shade == "open" {
-                color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.15)
+                color = UIColor.red.open
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "green", card.shade == "solid" {
-                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+                color = UIColor.green.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "green", card.shade == "striped" {
-                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+                color = UIColor.green.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "green", card.shade == "open" {
-                color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.15)
+                color = UIColor.green.open
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "purple", card.shade == "solid" {
-                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
+                color = UIColor.purple.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "purple", card.shade == "striped" {
-                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.5)
+                color = UIColor.purple.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "purple", card.shade == "open" {
-                color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.15)
+                color = UIColor.green.open
                 button.setTitleColor(color, for: UIControl.State.normal)
             }
         }
@@ -225,6 +226,10 @@ class ViewController: UIViewController {
         updateScoreLabel()
     }
     
+    func detectionSetAvailableInTheVisibleCards() {
+        addCardsStackView.isHidden = true
+    }
+    
     func startNewGame() {
         game = Game()
         renderCards()
@@ -235,11 +240,20 @@ class ViewController: UIViewController {
         startTimeOfPlay = Date()
     }
     
-//TODO: Requirements
-    
-    //Like you did for Concentration, you must have a New Game button and show the Score in the UI. It is up to you how you want to score your Set game. For example, you could give 3 points for a match and -5 for a mismatch and maybe even -1 for a deselection. Perhaps fewer points are scored depending on how many cards are on the table (i.e. how many times Deal 3 More Cards has been touched). Whatever you think best evaluates how well the player is playing.
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+}
+
+extension UIColor {
+    var solid: UIColor {
+        return self.withAlphaComponent(1.0)
+    }
+    var striped: UIColor {
+        return self.withAlphaComponent(0.5)
+    }
+    var open: UIColor {
+        return self.withAlphaComponent(0.15)
+    }
+    
 }
