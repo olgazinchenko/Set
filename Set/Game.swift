@@ -11,10 +11,10 @@ import UIKit
 struct Game {
     
     var cards = [Card]()
-    var numberOfShapes = 3
-    var shapes: [Character] = ["▲","●","■"]
-    var colors = ["red", "green", "purple"]
-    var shades = ["solid", "striped", "open"]
+    let numberOfShapes = 3
+    let shapes: [Character] = ["▲","●","■"]
+    let colors = ["red", "green", "purple"]
+    let shades = ["solid", "striped", "open"]
     var index = 0
     var score = 0
     
@@ -41,6 +41,18 @@ struct Game {
             cards.remove(at: randomCardIndex)
         }
     return inGameCards
+    }
+    
+    mutating func replaceMatchingSetCards(isSetResult: Bool) {
+        if isSetResult {
+            for index in inGameCards.indices {
+                if inGameCards[index].isSelected {
+                    if let pickedInGameCardIndex = cards.indices.randomElement() {
+                        inGameCards[index] = cards.remove(at: pickedInGameCardIndex)
+                    }
+                }
+            }
+        }
     }
     
     mutating func isSet(selectedCards: [Card]) -> Bool {

@@ -26,7 +26,9 @@ class ViewController: UIViewController {
             isSet = game.isSet(selectedCards: selectedCardsInGame)
             inticateIsSetResult(isSetResult: isSet)
             if isSet {
-                replaceMatchingSetCards(isSetResult: isSet)
+                game.replaceMatchingSetCards(isSetResult: isSet)
+                updateViewFromModel()
+                deselectAllCards()
                 addPenaltyToScoreAccordingToSpeedOfPlay(from: startTimeOfPlay)
             }
             if selectedCardsInGame.count == 3 {
@@ -88,7 +90,7 @@ class ViewController: UIViewController {
             if card.color == "red", card.shade == "solid" {
                 color = UIColor.red.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
-            }  else if card.color == "red", card.shade == "striped" {
+            } else if card.color == "red", card.shade == "striped" {
                 color = UIColor.red.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "red", card.shade == "open" {
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
                 color = UIColor.purple.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
             } else if card.color == "purple", card.shade == "open" {
-                color = UIColor.green.open
+                color = UIColor.purple.open
                 button.setTitleColor(color, for: UIControl.State.normal)
             }
         }
@@ -197,20 +199,6 @@ class ViewController: UIViewController {
     func deselectAllCards() {
         for index in game.inGameCards.indices {
             game.inGameCards[index].isSelected = false
-        }
-    }
-    
-    func replaceMatchingSetCards(isSetResult: Bool) {
-        if isSetResult {
-            for index in game.inGameCards.indices {
-                if game.inGameCards[index].isSelected {
-                    if let pickedInGameCardIndex = game.cards.indices.randomElement() {
-                        game.inGameCards[index] = game.cards.remove(at: pickedInGameCardIndex)
-                    }
-                }
-            }
-            updateViewFromModel()
-            deselectAllCards()
         }
     }
     
