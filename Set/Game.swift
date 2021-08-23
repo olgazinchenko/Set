@@ -11,19 +11,16 @@ import UIKit
 struct Game {
     
     var cards = [Card]()
-    let numberOfShapes = 3
-    let shapes: [Character] = ["▲","●","■"]
-    let colors = ["red", "green", "purple"]
-    let shades = ["solid", "striped", "open"]
     var index = 0
     var score = 0
     
     mutating func cardsGenerator() -> [Card] {
         //The method generates an array of 81 cards
-            for shape in shapes {
-                for color in colors {
-                    for number in 1...numberOfShapes {
-                        for shade in shades {
+        let variants = Card.Variant.allVariants
+        for shape in variants {
+            for color in variants {
+                    for number in variants {
+                        for shade in variants {
                             cards += [Card(identifier: index, color: color, shade: shade, shape: shape, numberOfShapes: number)]
                             index += 1
                         }

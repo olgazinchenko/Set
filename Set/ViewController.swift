@@ -74,44 +74,61 @@ class ViewController: UIViewController {
             addCardsStackViews[index].isHidden = true
         }
     }
-        
+    
+//    let numberOfShapes = 3
+    let shapes = ["▲","●","■"]
+    let colors = ["red", "green", "purple"]
+    let shades = ["solid", "striped", "open"]
+    
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.inGameCards[index]
-            if card.numberOfShapes == 1 {
-                button.setTitle(String(card.shape), for: UIControl.State.normal)
-            } else if card.numberOfShapes == 2 {
-                button.setTitle(String(card.shape) + String(card.shape), for: UIControl.State.normal)
-            } else {
-                button.setTitle(String(card.shape) + String(card.shape) + String(card.shape), for: UIControl.State.normal)
+            if card.numberOfShapes == Card.Variant.v1, card.shape == Card.Variant.v1 {
+                button.setTitle(shapes[0], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v2, card.shape == Card.Variant.v1 {
+                button.setTitle(shapes[0] + shapes[0], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v3, card.shape == Card.Variant.v1 {
+                button.setTitle(shapes[0] + shapes[0] + shapes[0], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v1, card.shape == Card.Variant.v2 {
+                button.setTitle(shapes[1], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v2, card.shape == Card.Variant.v2 {
+                button.setTitle(shapes[1] + shapes[1], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v3, card.shape == Card.Variant.v2 {
+                button.setTitle(shapes[1] + shapes[1] + shapes[1], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v1, card.shape == Card.Variant.v3 {
+                button.setTitle(shapes[2], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v2, card.shape == Card.Variant.v3 {
+                button.setTitle(shapes[2] + shapes[2], for: UIControl.State.normal)
+            } else if card.numberOfShapes == Card.Variant.v3, card.shape == Card.Variant.v3 {
+                button.setTitle(shapes[2] + shapes[2] + shapes[2], for: UIControl.State.normal)
             }
             var color = UIColor()
-            if card.color == "red", card.shade == "solid" {
+            if card.color == Card.Variant.v1, card.shade == Card.Variant.v1 {
                 color = UIColor.red.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "red", card.shade == "striped" {
+            } else if card.color == Card.Variant.v1, card.shade == Card.Variant.v2 {
                 color = UIColor.red.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "red", card.shade == "open" {
+            } else if card.color == Card.Variant.v1, card.shade == Card.Variant.v3 {
                 color = UIColor.red.open
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "green", card.shade == "solid" {
+            } else if card.color == Card.Variant.v2, card.shade == Card.Variant.v1 {
                 color = UIColor.green.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "green", card.shade == "striped" {
+            } else if card.color == Card.Variant.v2, card.shade == Card.Variant.v2 {
                 color = UIColor.green.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "green", card.shade == "open" {
+            } else if card.color == Card.Variant.v2, card.shade == Card.Variant.v3 {
                 color = UIColor.green.open
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "purple", card.shade == "solid" {
+            } else if card.color == Card.Variant.v3, card.shade == Card.Variant.v1 {
                 color = UIColor.purple.solid
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "purple", card.shade == "striped" {
+            } else if card.color == Card.Variant.v3, card.shade == Card.Variant.v2 {
                 color = UIColor.purple.striped
                 button.setTitleColor(color, for: UIControl.State.normal)
-            } else if card.color == "purple", card.shade == "open" {
+            } else if card.color == Card.Variant.v3, card.shade == Card.Variant.v3 {
                 color = UIColor.purple.open
                 button.setTitleColor(color, for: UIControl.State.normal)
             }
