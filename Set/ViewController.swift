@@ -28,8 +28,8 @@ class ViewController: UIViewController {
             if isSet {
                 game.replaceMatchingSetCards(isSetResult: isSet)
                 updateViewFromModel()
-                deselectAllCards()
                 addPenaltyToScoreAccordingToSpeedOfPlay(from: startTimeOfPlay)
+                deselectAllCards()
             }
             if selectedCardsInGame.count == 3 {
                 updateScoreLabel()
@@ -75,7 +75,6 @@ class ViewController: UIViewController {
         }
     }
     
-//    let numberOfShapes = 3
     let shapes = ["▲","●","■"]
     let colors = ["red", "green", "purple"]
     let shades = ["solid", "striped", "open"]
@@ -209,7 +208,6 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
             renderCards()
-            deselectAllCards()
             }
     }
     

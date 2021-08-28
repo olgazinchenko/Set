@@ -11,6 +11,7 @@ import UIKit
 struct Game {
     
     var cards = [Card]()
+    var matchedCards = [Card]()
     var index = 0
     var score = 0
     
@@ -45,6 +46,7 @@ struct Game {
             for index in inGameCards.indices {
                 if inGameCards[index].isSelected {
                     if let pickedInGameCardIndex = cards.indices.randomElement() {
+                        matchedCards.append(inGameCards[index])
                         inGameCards[index] = cards.remove(at: pickedInGameCardIndex)
                     }
                 }

@@ -19,7 +19,7 @@ struct Card: Equatable, CustomStringConvertible {
     var shade: Variant
     var shape: Variant
     var numberOfShapes: Variant
-    var isSelected: Bool = false
+    var isSelected = false
     
     static func ==(lhs: Card, rhs: Card) -> Bool {
         return lhs.color == rhs.color
