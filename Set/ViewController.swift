@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Set
-//
-//  Created by Ольга on 18.06.2021.
-//
-
 import UIKit
 
 
@@ -142,14 +135,10 @@ class ViewController: UIViewController {
         
     func selectAndDeselecCards(by index: Int){
         var selectedCardsNumber = 0
-        for index in game.inGameCards.indices {
-            if game.inGameCards[index].isSelected == true {
-                selectedCardsNumber += 1
-            }
-        }
         if cardButtons[index].layer.borderColor == UIColor.gray.cgColor, selectedCardsNumber < 3  {
             cardButtons[index].layer.borderColor = UIColor.green.cgColor
             game.inGameCards[index].isSelected = true
+            selectedCardsNumber += 1
         }
         else {
             cardButtons[index].layer.borderColor = UIColor.gray.cgColor
@@ -208,6 +197,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
             renderCards()
+            deselectAllCards()
             }
     }
     
@@ -258,5 +248,4 @@ extension UIColor {
     var open: UIColor {
         return self.withAlphaComponent(0.15)
     }
-    
 }
