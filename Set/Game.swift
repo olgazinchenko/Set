@@ -41,19 +41,6 @@ struct Game {
     return inGameCards
     }
     
-    mutating func replaceMatchingSetCards(isSetResult: Bool) {
-        if isSetResult {
-            for index in inGameCards.indices {
-                if inGameCards[index].isSelected {
-                    if let pickedInGameCardIndex = cards.indices.randomElement() {
-                        matchedCards.append(inGameCards[index])
-                        inGameCards[index] = cards.remove(at: pickedInGameCardIndex)
-                    }
-                }
-            }
-        }
-    }
-    
     mutating func isSet(selectedCards: [Card]) -> Bool {
         var isSet = false
         let selectedCardsCount = selectedCards.count

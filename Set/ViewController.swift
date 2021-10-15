@@ -17,9 +17,9 @@ class ViewController: UIViewController {
             startTimeOfPlay = Date()
             let selectedCardsInGame = selectedCards()
             isSet = game.isSet(selectedCards: selectedCardsInGame)
-            inticateIsSetResult(isSetResult: isSet)
+            inticateIsSetResult(isSet: isSet)
             if isSet {
-                game.replaceMatchingSetCards(isSetResult: isSet)
+                replaceMatchingSetCards(isSet: isSet)
                 updateViewFromModel()
                 addPenaltyToScoreAccordingToSpeedOfPlay(from: startTimeOfPlay)
                 deselectAllCards()
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     func renderCards() {
         for index in cardButtons.indices {
             if isSet, game.cards == [], cardButtons[index].layer.borderColor == UIColor.green.cgColor {
-                        cardButtons[index].isEnabled = false
+                cardButtons[index].isEnabled = false
             } else if cardButtons[index].isEnabled {
                 cardButtons[index].layer.borderWidth = 2.0
                 cardButtons[index].layer.borderColor = UIColor.gray.cgColor
@@ -58,6 +58,19 @@ class ViewController: UIViewController {
             if cardButtons[index].isEnabled == false {
                 cardButtons[index].setTitle("", for: UIControl.State.normal)
                 cardButtons[index].layer.borderWidth = 0
+            }
+        }
+    }
+    
+    func replaceMatchingSetCards(isSet: Bool) {
+        if isSet {
+            for index in game.inGameCards.indices {
+                if game.inGameCards[index].isSelected {
+                    if let pickedInGameCardIndex = game.cards.indices.randomElement() {
+                        game.matchedCards.append(game.inGameCards[index])
+                        game.inGameCards[index] = game.cards.remove(at: pickedInGameCardIndex)
+                    }
+                }
             }
         }
     }
@@ -132,10 +145,11 @@ class ViewController: UIViewController {
     func updateScoreLabel() {
         scoreLabel.text = "Score: \(game.score)"
     }
-        
+     
+    // TODO: Remember that your Model doesn’t actually note successfully matched cards as matched until the next card selection happens or “Deal 3 More Cards” happens (which is fine, you don’t want to hide matched cards from the UI until after the user has had a chance to see that he or she has made a successful match anyway).
     func selectAndDeselecCards(by index: Int){
         var selectedCardsNumber = 0
-        if cardButtons[index].layer.borderColor == UIColor.gray.cgColor, selectedCardsNumber < 3  {
+        if cardButtons[index].layer.borderColor == UIColor.gray.cgColor {
             cardButtons[index].layer.borderColor = UIColor.green.cgColor
             game.inGameCards[index].isSelected = true
             selectedCardsNumber += 1
@@ -184,14 +198,15 @@ class ViewController: UIViewController {
     return selectedCards
     }
     
-    func inticateIsSetResult(isSetResult: Bool) {
+    func inticateIsSetResult(isSet: Bool) {
         let selectedCardsCount = selectedCards().count
-        if isSetResult == true, selectedCardsCount == 3 {
+        if isSet, selectedCardsCount == 3 {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.green})
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.white})
-        } else if isSetResult == false, selectedCardsCount == 3 {
+            renderCards()
+        } else if selectedCardsCount == 3 {
             UIView.animate(withDuration: 1, animations:
                             {self.view.backgroundColor = UIColor.red})
             UIView.animate(withDuration: 1, animations:
